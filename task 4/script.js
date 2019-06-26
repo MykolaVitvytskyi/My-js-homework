@@ -4,12 +4,12 @@ var smoking = confirm('Ты куришь?');
 if(yourAge < 18 && smoking == false){
     alert('Так держать!');
 }
-if(yourAge < 18 && smoking == true){
+else if(yourAge < 18 && smoking == true){
     alert('Маме расскажу');
 }
-if(yourAge >= 18 && smoking == false){
+else if(yourAge >= 18 && smoking == false){
     alert('Молодец, и не надо');
 }
-if(yourAge >= 18 && smoking == true){
+else{
     alert('Ну и зря');
 }
