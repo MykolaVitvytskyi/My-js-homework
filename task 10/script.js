@@ -4,19 +4,21 @@ var result = number;
 
 var i = 1
 while (i < exponent) {
-    result = number * result;
+    result *= number;
     i++;
 }
 alert(result);
 
-var i = 1
+result = number;
+i = 1
 do {
-    result = number * result;
+    result *= number;
     i++;
-    console.log(result);
 } while(i < exponent);
+alert(result);
 
-for (var i = 1 ; i < exponent; i++) {
-    result = number * result;
-    console.log(result);
+result = number;
+for (i = 1 ; i < exponent; i++) {
+    result *= number;
 }
+alert(result);
