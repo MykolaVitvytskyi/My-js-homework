@@ -1,20 +1,24 @@
 var number = prompt('Введите число');
 var exponent = prompt('Введите степень');
-var result = number;
 
-var i = 1
+if(exponent == 0 && number != 0){
+    number = 1;
+}
+
+var result = number;
+var i = 1;
 while (i < exponent) {
     result *= number;
     i++;
 }
 alert(result);
 
-result = number;
-i = 1
+result = 1;
+i = 1;
 do {
     result *= number;
     i++;
-} while(i < exponent);
+} while(i <= exponent);
 alert(result);
 
 result = number;
