@@ -13,7 +13,7 @@ function recursion(a){
 }
 
 function cycle(a){
-    for (i = 100; i > 1; i--) {
+    for (; a >= 0;) {
         if (a === 1){
             alert('YES');
             break
