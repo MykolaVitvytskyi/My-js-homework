@@ -3,7 +3,7 @@ var number = prompt('Введите число');
 function getNumberOfEven(n){
     var even = 0;
     for (var i = 0; i < number.length; i++){ 
-        if (number[i] % 2 <= 0){ 
+        if (number[i] % 2 < 1){ 
         even++;
         }
     }
