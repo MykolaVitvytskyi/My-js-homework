@@ -7,8 +7,7 @@ function upperLowerCase(name){
         arr[i] = arr[i].substring(0, 1).toUpperCase() + arr[i].substring(1).toLowerCase();
     }
 
-    var name = arr.join(' ');
-    return name
+    return arr.join(' ');
 }
 
 name = upperLowerCase(name);
