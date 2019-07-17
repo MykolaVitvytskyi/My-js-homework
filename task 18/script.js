@@ -10,8 +10,8 @@ function sortNumber(a,b){
 
 function getNumberFromWord(str){
     for(i = 0; i < str.length; i++){
-        if(str[i] >= 1){
-            return str = str.substr(i, 1); 
+        if(+str[i]){
+            return str.substr(i, 1); 
         }
     }
 }
