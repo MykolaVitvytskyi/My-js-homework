@@ -1,11 +1,15 @@
 var divList = document.getElementsByTagName('div');
 
 function addNumbering(){
-    for(var i = 1; i <= divList.length ; i++){
+    var even = 1;
+    var odd = 1;
+    for(var i = 0; i < divList.length ; i++){
         if(i%2){
-            divList[i-1].innerText = 'Я нечетный элемент №'+i;
+            divList[i].innerText = 'Я четный элемент №'+even;
+            even++;
         }else{
-            divList[i-1].innerText = 'Я четный элемент №'+i;
+            divList[i].innerText = 'Я нечетный элемент №'+odd;
+            odd++;
         }
     }
 }
