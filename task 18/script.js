@@ -9,7 +9,7 @@ function sortNumber(a,b){
 }
 
 function getNumberFromWord(str){
-    for(i = 0; i < str.length; i++){
+    for(var i = 0; i < str.length; i++){
         if(+str[i]){
             return str[i]
         }
