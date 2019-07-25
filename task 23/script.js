@@ -1,10 +1,14 @@
 var redBg;
-document.body.addEventListener("click" , function(event){
-  if(redBg && event.target.className === "square"){
-    redBg.classList.remove('redBg')
-  }
+document.querySelector('.container').addEventListener("click" , function(event){
   if(event.target.className === "square"){
-    event.target.classList.add('redBg');
-    redBg = event.target;
+    switchRedBg(event.target);
+  }
+
+  function switchRedBg(target){
+    target.classList.add('redBg');
+    if(redBg){
+      redBg.classList.remove('redBg')
+    }
+    redBg = target;
   }
 })
