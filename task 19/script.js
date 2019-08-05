@@ -1,113 +1,111 @@
-var group = [];
-
-function getStudentObj(group){
-  function addStud(name, age){
-    group.push({
-      "name": name,
-      "age": age,
-      "marks": []
-    });
-    return group[group.length - 1]
+function createStudent(name, age){
+  return {
+    name : name,
+		age : age,
+		marks : []
   }
-  return addStud
 }
 
-var student = getStudentObj(group);
+var students = [
+  createStudent('Kolya', 20),
+  createStudent('Julia', 25),
+  createStudent('Andrew', 30)
+];
 
-console.log(student('Kolya', 20));
-console.log(student('Julia', 25));
-console.log(student('Andrew', 30));
-console.log(group);
-
-function studentManagement(group){
+function studentManagement(students){
+  var group = students.slice(0);
   
-    studentManagement.addStudent = function(name,age){
-      group.push({
-        "name": name,
-        "age": age,
-        "marks": []})
-      ;}
-    
-    studentManagement.removeStudent = function(name){
-      for (var i = 0; i < group.length; i++){
-        if (group[i].name === name){
+  var manage = {
+
+    addStudent : function(stud){
+      group.push(stud);
+    },
+
+    getStudentName : function(name){
+      return group.find(function(elem){
+				return elem.name === name;
+			});
+    },
+
+    getStudentIndex : function(name){
+      return group.findIndex(function(elem){
+				return elem.name === name;
+      });
+    },
+
+    removeStudent : function(name){
+      var i = manage.getStudentIndex(name);
+
+        if (i != -1){
           group.splice(i, 1);
         }
+    },
+
+    addMark : function(name, lessonNumber, mark ){
+      var student = manage.getStudentName(name);
+
+      if(student){
+        student.marks[lessonNumber] = mark;
       }
-    }
+    },
 
-    studentManagement.addMark = function(name, marks){
-      for (var i = 0; i < group.length; i++){
-          if (group[i].name === name){
-            group[i].marks.push(marks);
-          }
-       }
-     };
+    getAverageMark : function(name){
+      var student = manage.getStudentName(name);
 
-     studentManagement.getAverageMark = function(name){
-      var sumMarks = 0;
-      for (var i = 0; i < group.length; i++){
-        if (group[i].name === name){
-          for (var a = 0; a < group[i].marks.length; a++){
-            sumMarks += group[i].marks[a];
-          }
-          return sumMarks / group[i].marks.length;
+        if (student){
+          return student.marks.reduce(function(prev, next){
+            return (prev + next);
+          }, 0) / student.marks.length;
         }
-      }
-    };
-    
-    studentManagement.getAverageLessonMark = function(lessonNumber){
+    },
+
+    getAverageLessonMark : function(lessonNumber){
       var count = 0;
       var sumMarks = 0;
-      for (var i = 0; i < group.length; i++){
-        if(group[i].marks[lessonNumber]){
-          sumMarks += group[i].marks[lessonNumber];
-          count++
-        }
-      }
 
-        return 'Средняя оценка группы за занятие '+lessonNumber+' = '+ sumMarks / count;
-      };
+      group.forEach(function(student){
 
-      studentManagement.sortStudentsByName = function(){
-        group.sort(function(a,b){
-          return a.name > b.name ? 1 : -1;
-        })
-        return group;
-      }
+				if(student.marks[lessonNumber]){
+					sumMarks += student.marks[lessonNumber];
+          count++;
+				}
+			});
 
-      studentManagement.sortStudentsByMarks = function(){
-        group.sort(function(a,b){
-          return mng.getAverageMark(a.name) < mng.getAverageMark(b.name) ? 1 : -1;
-        })
-        return group;
-      }
+      return sumMarks / count
+    },
 
-    return studentManagement;
-}
+    sortStudentsByName : function(){
+      return group.sort(function(a,b){
+        return a.name > b.name ? 1 : -1;
+      })
+    },
 
+    sortStudentsByMarks : function(){
+      return group.sort(function(a,b){
+        return manage.getAverageMark(a.name) < manage.getAverageMark(b.name) ? 1 : -1;
+      })
+    }
+  };
 
-var mng = studentManagement(group);
+    return manage;
+  }
 
-mng.addStudent('Oleg', 18);
-mng.removeStudent('Kolya');
+var manage = studentManagement(students);
 
-mng.addMark('Julia', 3);
-mng.addMark('Julia', 7);
-mng.addMark('Andrew', 10);
-mng.addMark('Andrew', 8);
-mng.addMark('Andrew', 9);
-mng.addMark('Oleg', 7);
-mng.addMark('Oleg', 9);
-
-console.log(mng.getAverageMark('Andrew'));
-console.log(mng.getAverageLessonMark(1));
-
-console.log(mng.sortStudentsByName());
-console.log(mng.sortStudentsByMarks());
+manage.addStudent(createStudent('Oleg', 18));
+manage.removeStudent('Kolya');
 
 
+manage.addMark('Julia', 0, 3);
+manage.addMark('Julia', 1, 7);
+manage.addMark('Andrew', 0, 10);
+manage.addMark('Andrew', 1, 8);
+manage.addMark('Andrew', 2, 9);
+manage.addMark('Oleg', 0, 7);
+manage.addMark('Oleg', 1, 9);
 
+console.log(manage.getAverageMark('Andrew'));
+console.log(manage.getAverageLessonMark(1));
 
-
-
+console.log(manage.sortStudentsByName());
+console.log(manage.sortStudentsByMarks());
