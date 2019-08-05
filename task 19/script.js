@@ -1,8 +1,8 @@
 function createStudent(name, age){
   return {
     name : name,
-		age : age,
-		marks : []
+    age : age,
+    marks : []
   }
 }
 
@@ -14,7 +14,7 @@ var students = [
 
 function studentManagement(students){
   var group = students.slice(0);
-  
+
   var manage = {
 
     addStudent : function(stud){
@@ -23,40 +23,40 @@ function studentManagement(students){
 
     getStudentName : function(name){
       return group.find(function(elem){
-				return elem.name === name;
-			});
+        return elem.name === name;
+      });
     },
 
     getStudentIndex : function(name){
       return group.findIndex(function(elem){
-				return elem.name === name;
+        return elem.name === name;
       });
     },
 
     removeStudent : function(name){
       var i = manage.getStudentIndex(name);
 
-        if (i != -1){
-          group.splice(i, 1);
-        }
-    },
-
-    addMark : function(name, lessonNumber, mark ){
-      var student = manage.getStudentName(name);
-
-      if(student){
-        student.marks[lessonNumber] = mark;
+      if (i != -1){
+        group.splice(i, 1);
       }
     },
+
+      addMark : function(name, lessonNumber, mark ){
+        var student = manage.getStudentName(name);
+
+        if(student){
+          student.marks[lessonNumber] = mark;
+        }
+      },
 
     getAverageMark : function(name){
       var student = manage.getStudentName(name);
 
-        if (student){
-          return student.marks.reduce(function(prev, next){
-            return (prev + next);
-          }, 0) / student.marks.length;
-        }
+      if (student){
+        return student.marks.reduce(function(prev, next){
+          return (prev + next);
+        }, 0) / student.marks.length;
+      }
     },
 
     getAverageLessonMark : function(lessonNumber){
@@ -65,14 +65,14 @@ function studentManagement(students){
 
       group.forEach(function(student){
 
-				if(student.marks[lessonNumber]){
-					sumMarks += student.marks[lessonNumber];
+        if(student.marks[lessonNumber]){
+          sumMarks += student.marks[lessonNumber];
           count++;
-				}
-			});
+        }
+      });
 
-      return sumMarks / count
-    },
+    return sumMarks / count
+  },
 
     sortStudentsByName : function(){
       return group.sort(function(a,b){
@@ -87,8 +87,8 @@ function studentManagement(students){
     }
   };
 
-    return manage;
-  }
+  return manage;
+}
 
 var manage = studentManagement(students);
 
