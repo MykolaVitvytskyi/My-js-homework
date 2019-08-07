@@ -27,14 +27,10 @@ function studentManagement(students){
       });
     },
 
-    getStudentIndex : function(name){
-      return group.findIndex(function(elem){
+    removeStudent : function(name){
+      var i = group.findIndex(function(elem){
         return elem.name === name;
       });
-    },
-
-    removeStudent : function(name){
-      var i = manage.getStudentIndex(name);
 
       if (i != -1){
         group.splice(i, 1);
@@ -60,18 +56,9 @@ function studentManagement(students){
     },
 
     getAverageLessonMark : function(lessonNumber){
-      var count = 0;
-      var sumMarks = 0;
-
-      group.forEach(function(student){
-
-        if(student.marks[lessonNumber]){
-          sumMarks += student.marks[lessonNumber];
-          count++;
-        }
-      });
-
-    return sumMarks / count
+      return group.reduce(function(prev, next){
+        return (prev + next.marks[lessonNumber]);
+      }, 0) / group.length;
   },
 
     sortStudentsByName : function(){
@@ -100,7 +87,6 @@ manage.addMark('Julia', 0, 3);
 manage.addMark('Julia', 1, 7);
 manage.addMark('Andrew', 0, 10);
 manage.addMark('Andrew', 1, 8);
-manage.addMark('Andrew', 2, 9);
 manage.addMark('Oleg', 0, 7);
 manage.addMark('Oleg', 1, 9);
 

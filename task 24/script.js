@@ -1,30 +1,30 @@
-Hamburger.SIZE_SMALL = [50, 20],
-Hamburger.SIZE_BIG = [100, 40],
-Hamburger.STUFFING_CHEESE = [10, 20],
-Hamburger.STUFFING_SALAD = [20, 5],
-Hamburger.STUFFING_POTATO = [15, 10],
-Hamburger.TOPPING_SAUCE = [15, 0],
-Hamburger.TOPPING_MAYO = [20, 5]
+Hamburger.SIZE_SMALL = {price: 50, calories: 20};
+Hamburger.SIZE_BIG = {price: 100, calories: 40};
+Hamburger.STUFFING_CHEESE = {price: 10, calories: 20};
+Hamburger.STUFFING_SALAD = {price: 20, calories: 5};
+Hamburger.STUFFING_POTATO = {price: 15, calories: 10};
+Hamburger.TOPPING_SAUCE = {price: 15, calories: 0};
+Hamburger.TOPPING_MAYO = {price: 20, calories: 5};
 
 
 function Hamburger(size, stuffing){
   var topping = [];
-
+  var calories = size.calories + stuffing.calories;
+  var price = size.price + stuffing.price;
+  
   this.addTopping = function(item){  
     topping.push(item);
   };
 
   this.calcPrice = function(){
-    var price = size[0] + stuffing[0];
     return topping.reduce(function(prev, next){    
-      return prev + next[0];   
+      return prev + next.price;   
     },price);
   };
 
   this.calcCalories = function(){
-    var calories = size[1] + stuffing[1];
     return topping.reduce(function(prev, next){    
-      return prev + next[1];   
+      return prev + next.calories;   
     },calories);
   }
 }
