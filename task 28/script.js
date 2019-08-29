@@ -22,20 +22,19 @@ function clock(){
   span.innerText =  fullTime;
 }
 
-let timerId;
 document.querySelector('#btn-1').onclick = () =>{
-  
-  clearInterval(timerId);
-  timerId = setInterval(AlarmOnTime, 1000);
   const inputValue = document.querySelector("#alarmClock-1").value;
 
-  function AlarmOnTime(){
-    const time = getTime().slice(0, 5);
+  const inputTime = inputValue.slice(0,2)*60 + +inputValue.slice(3,5);
+  const timeNow = getTime().slice(0,2)*60 + +getTime().slice(3,5);
+  const timeNowSeconds = getTime().slice(6,8)* 1000;
 
-    if(inputValue===time){
-      alert('Будильник сработал!!!');
-      clearInterval(timerId);
-    }
+  if(inputTime > timeNow){
+    const timer = (inputTime-timeNow)*60000 -  timeNowSeconds;
+    setTimeout('alert("Будильник сработал!!!")', timer);
+  }else{
+    const timer = (1440-(timeNow-inputTime))*60000 - timeNowSeconds;
+    setTimeout('alert("Будильник сработал!!!")', timer);
   }
 }
 
