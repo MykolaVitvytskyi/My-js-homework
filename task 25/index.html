@@ -36,94 +36,103 @@
         </div>
         <div class="div-info">
             <div id="qqq" class="item-info item-info-1">
-                <p>Информация про товар - 1</p>
-                <p>Информация про товар - 1</p>
-                <p>Информация про товар - 1</p>
+                <div class="bgForInfo">
+                    <p>Информация про товар - 1</p>
+                    <p>Информация про товар - 1</p>
+                    <p>Информация про товар - 1</p>
+                </div>
                 <button class="info-btn">Купить</button>
             </div>
             <div class="item-info item-info-2">
+            <div class="bgForInfo">
                 <p>Информация про товар - 2</p>
                 <p>Информация про товар - 2</p>
                 <p>Информация про товар - 2</p>
+            </div>
                 <button class="info-btn">Купить</button>
             </div>
             <div class="item-info item-info-3">
+            <div class="bgForInfo">
                 <p>Информация про товар - 3</p>
                 <p>Информация про товар - 3</p>
                 <p>Информация про товар - 3</p>
+            </div>
                 <button class="info-btn">Купить</button>
             </div>
             <div class="item-info item-info-4">
+             <div class="bgForInfo">
                 <p>Информация про товар - 4</p>
                 <p>Информация про товар - 4</p>
                 <p>Информация про товар - 4</p>
+            </div>
                 <button class="info-btn">Купить</button>
             </div>
             <div class="item-info item-info-5">
+            <div class="bgForInfo">
                 <p>Информация про товар - 5</p>
                 <p>Информация про товар - 5</p>
                 <p>Информация про товар - 5</p>
+            </div>
                 <button class="info-btn">Купить</button>
             </div>
             <div class="item-info item-info-6">
+            <div class="bgForInfo">
                 <p>Информация про товар - 6</p>
                 <p>Информация про товар - 6</p>
                 <p>Информация про товар - 6</p>
+            </div>
                 <button class="info-btn">Купить</button>
             </div>
             <div class="item-info item-info-7">
+             <div class="bgForInfo">
                 <p>Информация про товар - 7</p>
                 <p>Информация про товар - 7</p>
                 <p>Информация про товар - 7</p>
+            </div>
                 <button class="info-btn">Купить</button>
             </div>
             <div class="item-info item-info-8">
+            <div class="bgForInfo">
                 <p>Информация про товар - 8</p>
                 <p>Информация про товар - 8</p>
                 <p>Информация про товар - 8</p>
+                </div>
                 <button class="info-btn">Купить</button>
             </div>
             <div class="item-info item-info-9">
+            <div class="bgForInfo">
                 <p>Информация про товар - 9</p>
                 <p>Информация про товар - 9</p>
                 <p>Информация про товар - 9</p>
+                </div>
                 <button class="info-btn">Купить</button>
             </div>
         </div>
     </div>
-    <form>
-        <label for="your-name">Укажите ФИО</label>
-        <input type="text" name="your-name" id="your-name">
-        <br>
-        <br>
-        <label for="city">Выберите ваш город</label>
+    <form class="decor" id="form">
+        <div class="form-left-decoration"></div>
+        <div class="form-right-decoration"></div>
+        <div class="circle"></div>
+        <div class="form-inner">
+            <h3>Оформление заказа</h3>
+            <input type="text" placeholder="ФИО" type="text" name="your-name" id="your-name">
+            <label for="city">Укажите город для доставки:</label>
         <select name="city" id="city">
-            <option>Киев</option>
-            <option>Одесса</option>
-            <option>Харьков</option>
-            <option>Львов</option>
-            <option>Днепр</option>
-            <option>Донецк</option>
+            <option value="">Выберите город</option>
+            <option value="kiev">Киев</option>
+            <option value="odessa">Одесса</option>
+            <option value="kharkov">Харьков</option>
+            <option value="lvov">Львов</option>
+            <option value="dnepr">Днепр</option>
+            <option value="donetsk">Донецк</option>
         </select>
-        <br>
-        <br>
-        <label for="number-np">Номер или адрес новой почты</label>
-        <input type="text" name="number-np" id="number-np">
-        <br>
-        <br>
-        <input type="radio" name="platezh" checked>Оплата банковской картой 
-        <input type="radio" name="platezh">Оплата наложенным платежом
-        <br>
-        <br>
-        <label for="count">Укажите количество</label>
-        <input type="number" id="count" value="1">
-        <br>
-        <br>
-        <label for="comment">Комментарий</label>
-        <textarea name="comment" id="comment"></textarea>
-        <br>
-        <br>
-        <button type="button" class="form-btn">Заказать</button>
+        <input type="text" name="number-np" id="number-np" placeholder="Номер или адрес отделения НП">
+        <input type="radio" name="platezh" class="rad" id="rad1">Оплата банковской картой 
+        <input type="radio" name="platezh" class="rad" id="rad2">Оплата наложенным платежом
+        <input type="number" id="count" placeholder="Укажите количество">
+        <textarea class="textarea" placeholder="Дополнительные пожелания..." rows="3"></textarea>
+        <button type="submit" class="form-btn">Отправить</button>
+        </div>
     </form>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="script.js"></script>
