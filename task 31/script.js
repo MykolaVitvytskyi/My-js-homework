@@ -10,7 +10,7 @@ function deepFreeze(obj){
 
     Object.defineProperty(obj, key,{
       value : value,
-			writable : false,
+      writable : false,
       configurable : false
     });
   });
